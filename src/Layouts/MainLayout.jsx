@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../Components/Header/Navbar';
 import Banner from '../Components/Banner/Banner';
+import Footer from '../Components/Footer/Footer';
 const MainLayout = () => {
     return (
         <div className='overflow-x-hidden'>
@@ -12,7 +13,7 @@ const MainLayout = () => {
             <div>
                 <Outlet></Outlet>
             </div>
-
+<Footer></Footer>
         </div>
     );
 };
