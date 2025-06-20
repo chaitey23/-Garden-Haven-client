@@ -3,8 +3,8 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className='bg-amber-900'>
-            <footer className="footer sm:footer-horizontal  text-white p-10">
+        <div className='bg-amber-900 mt-8'>
+            <footer className="footer sm:footer-horizontal flex justify-evenly  text-white p-10">
   <nav>
     <h6 className="footer-title">🌿 Services</h6>
     <a className="link link-hover">Plant Care Tips</a>
@@ -26,10 +26,10 @@ const Footer = () => {
     <a className="link link-hover">Terms & Privacy</a>
   </nav>
 </footer>
-<div className="flex flex-col md:flex-row items-center justify-between border-t border-gray-600 pt-6 mt-6 gap-4 text-sm text-gray-200">
+<div className="flex flex-col md:flex-row items-center justify-evenly border-t border-white pt-6 mt-6 gap-4 text-sm text-gray-200">
   <div className="text-center md:text-left">
     <span className="font-bold text-lime-500 text-base">GardenHaven</span>
-    <p className="mt-1">Contact: +880 1234 567890 | Email: info@gardenhaven.com</p>
+    <p className="mt-1">Contact: +880 1234 567890 <br /> Email: info@gardenhaven.com</p>
   </div>
 
  
