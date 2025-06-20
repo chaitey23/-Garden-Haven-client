@@ -26,22 +26,31 @@ const Footer = () => {
     <a className="link link-hover">Terms & Privacy</a>
   </nav>
 </footer>
+<div className="flex flex-col md:flex-row items-center justify-between border-t border-gray-600 pt-6 mt-6 gap-4 text-sm text-gray-200">
+  <div className="text-center md:text-left">
+    <span className="font-bold text-lime-500 text-base">GardenHaven</span>
+    <p className="mt-1">Contact: +880 1234 567890 | Email: info@gardenhaven.com</p>
+  </div>
 
-<footer className="footer border-base-300 text-white border-t px-10 py-4">
-  <aside className="items-center grid-flow-col">
-    <p>
-      <span className="font-bold text-lime-700">GardenHaven</span><br />
-      Nurturing green connections since 2025
-    </p>
-  </aside>
-  <nav className="md:place-self-center md:justify-self-end">
-    <div className="grid grid-flow-col gap-4">
-    <a href="https://www.facebook.com/chaetey001?mibextid=ZbWKwL" target='_blank'><FaFacebook className=" text-2xl" ></FaFacebook></a>
-    <a href=""><FaTwitter className='text-2xl'></FaTwitter></a>
-    <a href="https://www.instagram.com/chaitey12?igsh=cnQ0dHkzZXZqdDZk" target='_blank'><FaInstagram className='text-2xl'></FaInstagram></a>
-    </div>
-  </nav>
-</footer>
+ 
+  <div className="text-center">
+    <a href="#" className="hover:underline hover:text-lime-400 transition duration-200 mr-4">Terms of Service</a>
+    <a href="#" className="hover:underline hover:text-lime-400 transition duration-200">Privacy Policy</a>
+  </div>
+
+  
+  <div className="flex space-x-5">
+    <a href="https://www.facebook.com/chaetey001?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-200">
+      <FaFacebook className="text-2xl" />
+    </a>
+    <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-200">
+      <FaTwitter className="text-2xl" />
+    </a>
+    <a href="https://www.instagram.com/chaitey12?igsh=cnQ0dHkzZXZqdDZk" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-200">
+      <FaInstagram className="text-2xl" />
+    </a>
+  </div>
+</div>
 
         </div>
     );
