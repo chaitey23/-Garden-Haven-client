@@ -5,15 +5,15 @@ const Navbar = () => {
   const links = <>
 <nav>
     <NavLink to='/'  className='text-lg font-semibold'>Home</NavLink>
-  <NavLink to='/exploreGarden' className='text-lg font-semibold'>Explore Garden</NavLink>
+  <NavLink to='/exploreGardeners' className='text-lg font-semibold'>Explore Gardeners</NavLink>
   <NavLink to='/browseTips'  className='text-lg font-semibold'>BrowseTips</NavLink>
   <NavLink to='/shareTips'  className='text-lg font-semibold'>Share a Tips</NavLink>
   <NavLink to='/myTips'  className='text-lg font-semibold'>My Tips</NavLink>
 </nav>
   </>
   return (
-    <div className='mb-3'>
-      <div className="navbar">
+    <div className='fixed top-0 left-0 right-0 z-50 bg-white '>
+      <div className="navbar container mx-auto px-4 py-3">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +28,6 @@ const Navbar = () => {
             </ul>
           </div>
           <div className='flex items-center'>
-            <img className='w-[45px]' src='' alt="" />
             <a className="btn btn-ghost md:text-2xl lg:text-3xl font-bold"><span className='text-lime-600'>GARDEN</span><span className=''>HAVEN</span></a>
           </div>
         </div>
@@ -40,7 +39,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-lime-600 text-white rounded-4xl">Emergency</a>
+          <a className="btn bg-lime-600 text-white rounded-4xl">Login</a>
         </div>
       </div>
 
