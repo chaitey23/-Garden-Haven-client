@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 const ExploreGardeners = () => {
     const [AllGardeners,setAllGardeners]= useState([]);
+    const [loading,setLoading]= useState(true)
 useEffect(()=>{
     fetch('http://localhost:3000/exploreGardeners')
     .then(res => res.json())
     .then(data => {
         console.log(data);
-        setAllGardeners(data)
+        setAllGardeners(data);
+        setLoading(false)
     })
-},[])
+},[]);
+if(loading){
+  return (
+    <div className='flex justify-center items-center h-[50vh]'>
+      <span className="loading loading-spinner loading-xl text-lime-600"></span>
+    </div>
+  )
+}
 
     return (
        <div className='max-w-11/12 mx-auto'>

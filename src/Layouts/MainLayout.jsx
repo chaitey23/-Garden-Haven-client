@@ -12,7 +12,7 @@ const MainLayout = () => {
             <div className='pt-20'>
                 <Outlet></Outlet>
             </div>
-{/* <Footer></Footer> */}
+<Footer></Footer>
         </div>
     );
 };
