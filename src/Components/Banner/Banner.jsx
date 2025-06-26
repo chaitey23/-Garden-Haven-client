@@ -1,50 +1,4 @@
-// import React from 'react';
-// import banner1 from '../../assets/banner1.jpg'
-// import banner2 from '../../assets/banner2.jpg'
-// import banner3 from '../../assets/banner3.jpg'
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// const Banner = () => {
-//     return (
-//         <div className='relative w-screen h-screen overflow-hidden'>
-//             <Swiper
-//             modules={[Navigation,Pagination,Autoplay]}
-//             navigation
-//             pagination={{clickable:true}}
-//             autoplay={{delay:4000,disableOnInteraction:false}}
-//             loop
-//             className='!z-10 h-full'
-//             >
-//                 {[banner1,banner2,banner3].map((img,idx)=>(<SwiperSlide key={idx}>
-//                     <div
-//             className="h-screen md:h-[600px] bg-center bg-cover flex items-center justify-center"
-//             style={{ backgroundImage: `url(${img})` }}
-//           >
-//             <div className="bg-black/50 p-8 md:p-16 text-center rounded-lg">
-//               <h2 className="text-4xl md:text-6xl font-extrabold text-white">
-//                  Gardening Services
-//               </h2>
-//               <p className="mt-4 text-lg md:text-xl text-gray-200">
-//                 Professional landscaping &amp; maintenance for your dream garden.
-//               </p>
-//               <div className="mt-6 space-x-4">
-//                 <button className="btn btn-primary btn-lg">Get a Quote</button>
-//                 <button className="btn btn-outline btn-lg">Learn More</button>
-//               </div>
-//             </div>
-//           </div>
-
-//      </SwiperSlide>))}
-//             </Swiper>
-//         </div>
-//     );
-// };
-
-// export default Banner;
-import React from 'react';
+import React, { useState } from 'react';
 import banner1 from '../../assets/banner1.jpg';
 import banner2 from '../../assets/banner2.jpg';
 import banner3 from '../../assets/banner3.jpg';
@@ -54,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Link } from 'react-router';
+import { Typewriter } from 'react-simple-typewriter';
+
 
 const slides = [
   {
@@ -80,6 +36,7 @@ const slides = [
 ];
 
 const Banner = () => {
+  const [activeIndex, setActiveIndex] = useState(0)
   return (
     <div className="relative w-screen overflow-hidden">
       <Swiper
@@ -89,6 +46,7 @@ const Banner = () => {
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop
         className="!z-10 h-full"
+        onSlideChange={(Swiper)=>setActiveIndex(Swiper.realIndex)}
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={idx}>
@@ -101,8 +59,21 @@ const Banner = () => {
                   {slide.title}
                 </h2>
                 <p className="mt-4 text-lg md:text-xl text-gray-200">
-                  {slide.description}
-                </p>
+  {activeIndex === idx ? (
+    <Typewriter
+      words={[slide.description]}
+      loop={false}
+      cursor
+      cursorStyle="|"
+      typeSpeed={50}
+      deleteSpeed={30}
+      delaySpeed={1000}
+    />
+  ) : (
+    slide.description
+  )}
+</p>
+
                 <div className="mt-6 space-x-4">
                  <Link to='/browseTips'>
                   <button className="btn bg-lime-600 text-white btn-lg">{slide.btn1}</button>
