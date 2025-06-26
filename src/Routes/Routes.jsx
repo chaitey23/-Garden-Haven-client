@@ -9,6 +9,7 @@ import ShareTip from "../Pages/ShareTip/ShareTip";
 import MyTips from "../Pages/MyTips/MyTips";
 import TipDetails from "../Pages/TipDetails/TipDetails";
 import SignUp from "../Pages/SignUp/SignUp";
+import Login from "../Pages/LogIn/Login";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         {
             path:"signup",
             element:<SignUp></SignUp>
+        },
+        {
+            path:"login",
+            element:<Login></Login>
         }
         ]
     },
