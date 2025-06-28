@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Gardeners = () => {
     const [gardeners, setGardeners] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/gardeners')
+        fetch('https://gardening-hub-server-ten.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -16,14 +16,15 @@ const Gardeners = () => {
         <div className='mt-12 px-4'>
             <h1 className='text-3xl font-bold text-center text-lime-600 mb-12'> Meet Our <span className='text-green-500'>Featured Gardeners</span></h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {gardeners.map(gardener => (
-                    <Slide cascade
+                {gardeners.map((gardener) => (
+                    <Slide
+                        key={gardener._id}
+                        cascade
                         direction="up"
                         duration={1500}
                         damping={0.20}
                         triggerOnce>
                         <div
-                            key={gardener._id}
                             className='bg-white rounded-2xl p-6 border border-transparent hover:border-lime-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1'
                         >
                             <div className='w-32 h-32 mx-auto mb-4 rounded-full ring-4 ring-green-500 overflow-hidden'>

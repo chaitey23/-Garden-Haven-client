@@ -2,9 +2,10 @@ import React, { use, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
-    const { createUser,googleLogin } = use(AuthContext);
+    const { createUser,googleLogin,setUser } = use(AuthContext);
     const [passwordError, setPasswordError] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
@@ -39,8 +40,17 @@ const SignUp = () => {
         }
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
-                toast.success("SignUp SuccessFul!");
+                const createUser = result.user
+                return updateProfile(createUser,{
+                    displayName:name,
+                    photoURL:photo
+                })
+            })
+            .then(()=>{
+                createUser.displayName = name;
+                createUser.photoURL = photo;
+                setUser(createUser)
+                     toast.success("SignUp SuccessFul!");
             navigate(location.state || "/")
             })
             .catch(error => {
@@ -67,13 +77,13 @@ const SignUp = () => {
                     <h1 className="text-5xl font-bold text-lime-600">Sign Up now!</h1>
                     <form onSubmit={handleSignUp} className="fieldset">
                         <label className="label">Name</label>
-                        <input type="text" name='name' className="input" placeholder="Enter Your Name" />
+                        <input type="text" name='name' className="input" placeholder="Enter Your Name" required />
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" />
+                        <input type="email" name='email' className="input" placeholder="Email"  required/>
                         <label className="label">Photo URL</label>
-                        <input type="text" name='photo' className="input" placeholder="Photo URL" />
+                        <input type="text" name='photo' className="input" placeholder="Photo URL"  required/>
                         <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Password" />
+                        <input type="password" name='password' className="input" placeholder="Password" required />
                         {
                             passwordError && <p className='text-red-500 text-sm mt-1'>{passwordError}</p>
                         }

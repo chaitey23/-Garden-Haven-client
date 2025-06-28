@@ -53,9 +53,9 @@ const handleGoogleLogin = () => {
                     <h1 className="text-5xl font-bold text-lime-600">LogIn now!</h1>
                     <form onSubmit={handleLogIn}    className="fieldset">
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" />
+                        <input type="email" name='email' className="input" placeholder="Email" required />
                         <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Password" />
+                        <input type="password" name='password' className="input" placeholder="Password" required />
                         {
                             passwordError && <p className='text-red-500 text-sm mt-1'>{passwordError}</p>
                         }
