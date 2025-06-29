@@ -28,7 +28,7 @@ const TopGardeningTips = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://gardening-hub-server-ten.vercel.app/tips?status=public")
+    fetch("https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/tips?status=public")
       .then(res => res.json())
       .then(data => {
         setTips(data.slice(0, 6));

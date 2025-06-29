@@ -4,14 +4,23 @@ import { Link } from 'react-router';
 
 const Gardeners = () => {
     const [gardeners, setGardeners] = useState([])
+    const [loading,setLoading] = useState(true)
     useEffect(() => {
-        fetch('https://gardening-hub-server-ten.vercel.app/gardeners')
+        fetch('https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setGardeners(data)
+                setGardeners(data);
+                setLoading(false)
             })
     }, [])
+     if (loading) {
+    return (
+      <div className='flex justify-center items-center h-[50vh]'>
+        <span className="loading loading-spinner loading-xl text-lime-600"></span>
+      </div>
+    );
+  }
     return (
         <div className='mt-12 px-4'>
             <h1 className='text-3xl font-bold text-center text-lime-600 mb-12'> Meet Our <span className='text-green-500'>Featured Gardeners</span></h1>
