@@ -12,7 +12,7 @@
 //   const [imageLoaded, setImageLoaded] = useState({});
 
 //   useEffect(() => {
-//     fetch("https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/tips")
+//     fetch("http://localhost:3000/tips")
 //       .then(res => res.json())
 //       .then(data => {
 //         setTips(data);
@@ -171,7 +171,7 @@ const BrowseTips = () => {
   const [imageLoaded, setImageLoaded] = useState({});
 
   useEffect(() => {
-    fetch("https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/tips")
+    fetch("http://localhost:3000/tips")
       .then(res => res.json())
       .then(data => {
         setTips(data);

@@ -7,7 +7,7 @@ const TipDetails = () => {
     const {id} = useParams();
     const [tip,setTip] = useState(null);
     useEffect(()=>{
-        fetch(`https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/tips/${id}`)
+        fetch(`http://localhost:3000/tips/${id}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -22,7 +22,7 @@ const TipDetails = () => {
         )
     }
     const handleLike = () => {
-        fetch(`https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/tips/like/${id}`,{
+        fetch(`http://localhost:3000/tips/like/${id}`,{
             method:"PATCH",
             headers:{
                 'content-type' : "application/json"

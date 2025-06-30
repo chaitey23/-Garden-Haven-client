@@ -3,7 +3,7 @@ const ExploreGardeners = () => {
     const [AllGardeners,setAllGardeners]= useState([]);
     const [loading,setLoading]= useState(true)
 useEffect(()=>{
-    fetch('https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/exploreGardeners')
+    fetch('http://localhost:3000/exploreGardeners')
     .then(res => res.json())
     .then(data => {
         console.log(data);

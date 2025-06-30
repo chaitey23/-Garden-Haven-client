@@ -28,11 +28,13 @@ const TopGardeningTips = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://gardening-hub-server-3uha7eut4-chaiteys-projects.vercel.app/tips?status=public")
+    fetch("http://localhost:3000/tips?status=public")
       .then(res => res.json())
       .then(data => {
         setTips(data.slice(0, 6));
         setLoading(false);
+        console.log(data);
+        
       });
   }, []);
 
