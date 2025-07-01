@@ -35,13 +35,14 @@ useEffect(()=>{
         signIn,
         logout,
         loading,
+        setLoading,
         user,
         setUser
     }
     return (
-        <AuthContext value={userInfo}>
+        <AuthContext.Provider value={userInfo}>
             {children}
-        </AuthContext>
+        </AuthContext.Provider>
     );
 };
 

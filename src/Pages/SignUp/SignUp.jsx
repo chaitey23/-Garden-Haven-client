@@ -1,11 +1,11 @@
-import React, { use, useState } from 'react';
+import React, { use,    useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
-    const { createUser,googleLogin,setUser } = use(AuthContext);
+    const { createUser,googleLogin,setUser,setLoading } = use(AuthContext);
     const [passwordError, setPasswordError] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
@@ -38,24 +38,25 @@ const SignUp = () => {
         else {
             setPasswordError("")
         }
+        let signedUser;
         createUser(email, password)
             .then(result => {
-                const createUser = result.user
-                return updateProfile(createUser,{
+               signedUser = result.user
+                return updateProfile(signedUser,{
                     displayName:name,
                     photoURL:photo
                 })
             })
             .then(()=>{
-                createUser.displayName = name;
-                createUser.photoURL = photo;
-                setUser(createUser)
-                     toast.success("SignUp SuccessFul!");
-            navigate(location.state || "/")
-            })
+            setUser({ ...signedUser, displayName:name,photoURL:photo})
+            toast.success("SignUp SuccessFul!")  
+        navigate(location.state || "/")
+                    setLoading(false)   
+        })
             .catch(error => {
                 console.log(error);
                 toast.error(error.message || "Sign Up failed")
+                setLoading(false)
             })         
     }
        const handleRegisterGoogle = () => {

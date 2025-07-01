@@ -1,17 +1,19 @@
-import React, { use, useState } from 'react';
+import React, {  use,  useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-const {signIn,googleLogin} = use(AuthContext);
+const {signIn,googleLogin,loading,setLoading} = use(AuthContext);
 const location = useLocation();
+console.log(location.pathname);
+
 const navigate = useNavigate();
 const [passwordError,setPasswordError] = useState("");
-const [loading,setLoading] = useState(false)
 const handleLogIn =(e) => {
 e.preventDefault();
-setLoading(true)
+setLoading(true);
+setPasswordError("")
 const form = e.target;
 const email = form.email.value;
 const password = form.password.value;
@@ -25,10 +27,22 @@ signIn(email,password)
     navigate(`${location.state ? location.state : "/"}`)
 })
 .catch((error) => {
-    console.log(error);
+    console.log(error.code);
     setLoading(false)
     toast.error("LogInFailed")
-    setPasswordError("")
+    // setPasswordError(error.message)
+    if(error.code === "auth/invalid-credential."){
+        setPasswordError("Invalid email or password. Please try again.")
+    }
+    else if (error.code === "auth/user-not-found.") {
+        setPasswordError("No account found with this email");
+    }
+    else if (error.code === "auth/wrong-password" ){
+        setPasswordError("Incorrect password")
+    }
+    else{
+        setPasswordError('Login failed. Please try again later');
+    }
 })
 }
 const handleGoogleLogin = () => {
@@ -53,11 +67,13 @@ const handleGoogleLogin = () => {
                     <h1 className="text-5xl font-bold text-lime-600">LogIn now!</h1>
                     <form onSubmit={handleLogIn}    className="fieldset">
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" required />
+                        <input type="email" name='email' className="input" placeholder="Email" autoComplete='off' required />
                         <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Password" required />
+                        <input type="password" name='password' className="input" placeholder="Password" autoComplete='off' required />
                         {
-                            passwordError && <p className='text-red-500 text-sm mt-1'>{passwordError}</p>
+                            passwordError && <p className='text-red-500 text-sm mt-1'>
+                                {passwordError}
+                            </p>
                         }
                          <div><a className="link link-hover">Forgot password?</a></div>
                         <button type='submit' className="btn btn-neutral mt-4 bg-lime-600  border-none" disabled={loading}> {loading ? "Logging in..." : "Log In"}</button>
@@ -74,3 +90,4 @@ const handleGoogleLogin = () => {
 };
 
 export default Login;
+
