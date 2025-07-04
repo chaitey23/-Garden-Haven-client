@@ -61,7 +61,7 @@ const BrowseTips = () => {
     <div className="max-w-7xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-lime-600 text-center">Browse Gardening Tips</h1>
 
-      {/* Search + Filter */}
+ 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-6'>
         <input
           type="text"
@@ -92,7 +92,6 @@ const BrowseTips = () => {
         </select>
       </div>
 
-      {/* ✅ Responsive Table */}
       <div className="overflow-x-auto w-full">
         <table className="min-w-[800px] w-full bg-white rounded-lg shadow-md">
           <thead className="bg-lime-500 text-white">

@@ -11,6 +11,7 @@ import TipDetails from "../Pages/TipDetails/TipDetails";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/LogIn/Login";
 import PrivateRoute from "../Context/PrivateRoute";
+import EditTip from "../Pages/EditTip/EditTip";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -53,7 +54,10 @@ const router = createBrowserRouter([
             path:"/login",
             element:<Login></Login>
         },
-        
+        {
+            path:"/editTip/:id",
+            element:<EditTip></EditTip>
+        }
         ]
     },
 ]);
