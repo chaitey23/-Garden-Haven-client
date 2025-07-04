@@ -1,12 +1,14 @@
-import React, { use } from 'react';
+import React, { use, useContext } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const Navbar = () => {
-  const { user, logout,loading } = use(AuthContext);
-
+  const { user, logout, loading } = use(AuthContext);
+const {theme,toggleTheme} = useContext(ThemeContext);
   const handleLogOut = () => {
     logout()
       .then(() => {
@@ -17,10 +19,13 @@ const Navbar = () => {
         toast.error("Logout Failed");
       });
   };
-  if(loading){
-    return (<div className='h-screen flex justify-center items-center'>
-      <span className="loading loading-spinner loading-xl"></span>
-    </div>)
+
+  if (loading) {
+    return (
+      <div className='h-screen flex justify-center items-center'>
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
   }
 
   const links = (
@@ -42,19 +47,48 @@ const Navbar = () => {
   );
 
   return (
-    <div className='fixed top-0 left-0 right-0 z-50 bg-white'>
+    <div className='fixed top-0 left-0 right-0 z-50 bg-base-100'>
       <div className="navbar container mx-auto px-4 py-3">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+          <div className="dropdown lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-lime-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              {links}
+              className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow-lg bg-base-100 rounded-box w-56 border border-gray-200"
+            >
+              <li>
+                <NavLink to="/" className="py-2 px-3 rounded hover:bg-lime-100 hover:text-lime-700 transition font-medium">
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/exploreGardeners" className="py-2 px-3 rounded hover:bg-lime-100 hover:text-lime-700 transition font-medium">
+                  Explore Gardeners
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/browseTips" className="py-2 px-3 rounded hover:bg-lime-100 hover:text-lime-700 transition font-medium">
+                  BrowseTips
+                </NavLink>
+              </li>
+              {user?.email && (
+                <>
+                  <li>
+                    <NavLink to="/shareTips" className="py-2 px-3 rounded hover:bg-lime-100 hover:text-lime-700 transition font-medium">
+                      Share a Tips
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/myTips" className="py-2 px-3 rounded hover:bg-lime-100 hover:text-lime-700 transition font-medium">
+                      My Tips
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <div className='flex items-center'>
@@ -68,7 +102,14 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
 
-        <div className="navbar-end">
+        <div className="navbar-end gap-3">
+                <button
+            onClick={toggleTheme}
+            className="btn btn-circle bg-black text-white  transition"
+            aria-label="Toggle Dark/Light Mode"
+          >
+            {theme === "light" ? <FaMoon /> : <FaSun />}
+          </button>
           {
             user && user.email ? (
               <div className="dropdown dropdown-end">
@@ -94,6 +135,8 @@ const Navbar = () => {
               </Link>
             )
           }
+         
+
         </div>
       </div>
     </div>

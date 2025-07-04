@@ -52,7 +52,7 @@ const handleShareTipSubmit = e =>{
 }
 
     return (
-        <div className='max-w-3xl mx-auto p-8 bg-white shadow-2xl rounded-lg '>
+        <div className='max-w-3xl mx-auto p-8 bg-base-100 shadow-2xl rounded-lg '>
             <h1 className='text-3xl font-bold text-center mb-4 text-lime-600'>Share Your Gardening Wisdom</h1>
             <p className='text-center mb-6 text-lim'>
                 Inspire fellow gardeners by sharing your knowledge and experiences.
@@ -123,11 +123,11 @@ const handleShareTipSubmit = e =>{
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                  <legend className="fieldset-legend">User Email</legend>
-                      <input type="email" value={user?.email || ""}  readOnly className="input input-bordered bg-gray-100 w-full" />
+                      <input type="email" value={user?.email || ""}  readOnly className="input input-bordered bg-base-100 w-full" />
               </div>
                    <div>
                      <legend className="fieldset-legend">User Name</legend>
-                     <input type="text" value={user.displayName || ""}  readOnly className="input input-bordered bg-gray-100 w-full" />
+                     <input type="text" value={user.displayName || ""}  readOnly className="input input-bordered bg-base-100 w-full" />
                    </div>
                 </div>
 

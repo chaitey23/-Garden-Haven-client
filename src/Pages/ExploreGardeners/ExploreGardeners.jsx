@@ -27,7 +27,7 @@ if(loading){
 AllGardeners.map(allGardener => (
   <div
     key={allGardener._id}
-    className='bg-white rounded-2xl p-6 border border-transparent hover:border-lime-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1'
+    className='bg-base-100 rounded-2xl p-6 border border-transparent hover:border-lime-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1'
   >
     <p
       className={`inline-block px-3 py-1 text-sm font-semibold rounded-full mb-3 
@@ -46,15 +46,15 @@ AllGardeners.map(allGardener => (
     </div>
     <h3 className='text-xl font-semibold mb-2 text-center text-lime-700'>{allGardener.name}</h3>
 
-    <div className='flex justify-center gap-4 mb-2 text-gray-700 text-sm'>
+    <div className='flex justify-center gap-4 mb-2 text-base-content text-sm'>
       <p><strong>Age:</strong> {allGardener.age}</p>
       <p><strong>Gender:</strong> {allGardener.gender}</p>
     </div>
 
-    <p className='text-gray-700 text-center mb-1'><strong>Speciality:</strong> {allGardener.speciality}</p>
-    <p className='text-gray-700 text-center mb-1'><strong>Experience:</strong> {allGardener.experience}</p>
-    <p className='text-gray-700 text-center mb-1'><strong>Location:</strong> {allGardener.location}</p>
-    <p className='text-gray-700 text-center'><strong>Total Tips:</strong> {allGardener.totalTips}</p>
+    <p className='text-base-content text-center mb-1'><strong>Speciality:</strong> {allGardener.speciality}</p>
+    <p className='text-base-content text-center mb-1'><strong>Experience:</strong> {allGardener.experience}</p>
+    <p className='text-base-content text-center mb-1'><strong>Location:</strong> {allGardener.location}</p>
+    <p className='text-base-content text-center'><strong>Total Tips:</strong> {allGardener.totalTips}</p>
   </div>
 ))
 

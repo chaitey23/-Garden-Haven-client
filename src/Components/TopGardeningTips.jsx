@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { motion } from 'framer-motion';
+import { ThemeContext } from '../Context/ThemeContext';
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -26,6 +27,8 @@ const cardVariants = {
 const TopGardeningTips = () => {
   const [tips, setTips] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {theme} = useContext(ThemeContext);
+console.log(theme);
 
   useEffect(() => {
     fetch("http://localhost:3000/tips?status=public")
@@ -63,7 +66,7 @@ const TopGardeningTips = () => {
           <motion.div
             key={tip._id}
             variants={cardVariants}
-            className='bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-all'
+            className='bg-base-100 shadow-md rounded-lg p-4 hover:shadow-lg transition-all'
           >
             <img
               src={tip.image}
@@ -72,7 +75,7 @@ const TopGardeningTips = () => {
               className='h-40 w-full object-cover rounded mb-3'
             />
             <h3 className='text-xl font-semibold text-lime-700'>{tip.title}</h3>
-            <p className='text-sm text-gray-600 mb-2'>{tip.category}</p>
+            <p className='text-sm text-base-content  mb-2'>{tip.category}</p>
             <Link
               to={`/tips/${tip._id}`}
               className='text-blue-500 hover:underline text-sm flex items-center gap-2'

@@ -1,15 +1,17 @@
 nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    transition: 0.3s;
+  margin-right: 15px;
+  text-decoration: none;
+  transition: 0.3s;
 }
-nav a.active{
-    text-decoration: underline;
-    color: lime;
-    font-weight: bold;
-}
-nav a:hover{
-    text-decoration: underline;
-color: lime;
 
+nav a.active {
+  text-decoration: underline;
+  color: limegreen;
+  font-weight: bold;
 }
+
+nav a:hover {
+  text-decoration: underline;
+  color: limegreen;
+}
+

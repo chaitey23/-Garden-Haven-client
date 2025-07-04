@@ -12,6 +12,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/LogIn/Login";
 import PrivateRoute from "../Context/PrivateRoute";
 import EditTip from "../Pages/EditTip/EditTip";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
         {
             path:"/editTip/:id",
             element:<EditTip></EditTip>
+        },
+        {
+            path:"*",
+            element:<ErrorPage></ErrorPage>
         }
         ]
     },

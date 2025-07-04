@@ -37,7 +37,7 @@ const TipDetails = () => {
         })
     }
     return (
-         <div className="max-w-3xl mx-auto p-6 bg-green-50 shadow-sm rounded-lg mt-6">
+         <div className="max-w-3xl mx-auto p-6 bg-base-100 shadow-sm rounded-lg mt-6">
       <img src={tip.image} alt={tip.title} className="w-full h-60 object-cover rounded mb-4" />
       <Link to='/browseTips' className='flex gap-2 text-blue-500 items-center'>
       <FaArrowLeft />

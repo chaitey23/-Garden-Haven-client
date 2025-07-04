@@ -50,7 +50,7 @@ const EditTip = () => {
 
   return (
     <div>
-      <div className="max-w-3xl mx-auto p-8 bg-white shadow-2xl rounded-lg">
+      <div className="max-w-3xl mx-auto p-8 bg-base-100 shadow-2xl rounded-lg">
         <h1 className="text-3xl font-bold text-center mb-4 text-lime-600">
           Edit Your Gardening Tip
         </h1>
@@ -153,7 +153,7 @@ const EditTip = () => {
             </select>
           </div>
 
-          <div className="bg-gray-100 p-4 rounded-md text-sm text-gray-700">
+          <div className="bg-base-100 p-4 rounded-md text-sm text-base-content">
             <p className="font-semibold">Editing tip by:</p>
             <p>
               <span className="font-semibold">Name:</span> {tip.userName}

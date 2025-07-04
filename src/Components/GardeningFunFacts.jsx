@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const GardeningFunFacts = () => {
     return (
@@ -7,17 +8,17 @@ const GardeningFunFacts = () => {
         Gardening Fun Facts 🌿
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <div className="bg-base-100 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
           <h3 className="text-xl font-semibold text-green-700 mb-3">Banana is a Herb!</h3>
-          <p className="text-gray-700">Did you know? Banana plants are actually giant herbs, not trees.</p>
+          <p className="text-base-content">Did you know? Banana plants are actually giant herbs, not trees.</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <div className="bg-base-100 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
           <h3 className="text-xl font-semibold text-green-700 mb-3">Tomatoes once Poisonous</h3>
-          <p className="text-gray-700">In the past, Europeans thought tomatoes were poisonous!</p>
+          <p className="text-base-content">In the past, Europeans thought tomatoes were poisonous!</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <div className="bg-base-100 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
           <h3 className="text-xl font-semibold text-green-700 mb-3">Gardening Reduces Stress</h3>
-          <p className="text-gray-700">Spending time in the garden can improve your mental health and reduce stress.</p>
+          <p className="text-base-content">Spending time in the garden can improve your mental health and reduce stress.</p>
         </div>
       </div>
     </section>

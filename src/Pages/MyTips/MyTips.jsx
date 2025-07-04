@@ -52,10 +52,10 @@ const MyTips = () => {
         My Shared Tips
       </h1>
       {myTips.length === 0 ? (
-        <p className="text-center text-gray-500">No tips shared yet.</p>
+        <p className="text-center text-base-content">No tips shared yet.</p>
       ) : (
         <div className="overflow-x-auto w-full">
-          <table className="min-w-[800px] w-full bg-white text-sm rounded-lg">
+          <table className="min-w-[800px] w-full bg-base-100 text-sm rounded-lg">
             <thead className="bg-lime-500 text-white">
               <tr>
                 <th className="py-3 px-4 uppercase font-semibold">Image</th>
@@ -69,7 +69,7 @@ const MyTips = () => {
               {myTips.map(tip => (
                 <tr
                   key={tip._id}
-                  className=" border-b hover:bg-lime-50 transition duration-200"
+                  className=" border-b hover:bg-base-100 transition duration-200"
                 >
                   <td className="py-3 px-4">
                     <img

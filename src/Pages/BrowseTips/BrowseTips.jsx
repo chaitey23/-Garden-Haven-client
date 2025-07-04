@@ -93,7 +93,7 @@ const BrowseTips = () => {
       </div>
 
       <div className="overflow-x-auto w-full">
-        <table className="min-w-[800px] w-full bg-white rounded-lg shadow-md">
+        <table className="min-w-[800px] w-full bg-base-100 rounded-lg shadow-md">
           <thead className="bg-lime-500 text-white">
             <tr>
               <th className="text-left py-3 px-4 text-sm uppercase font-semibold">Image</th>
@@ -106,7 +106,7 @@ const BrowseTips = () => {
           <tbody>
             {filteredTips.length > 0 ? (
               filteredTips.map((tip, index) => (
-                <tr key={index} className="border-b hover:bg-lime-50 transition duration-200">
+                <tr key={index} className="border-b hover:bg-base-100 transition duration-200">
                   <td className="py-3 px-4">
                     <div className='relative w-20 h-12'>
                       {!imageLoaded[tip._id] && (

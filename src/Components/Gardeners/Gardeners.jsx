@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Fade, Slide } from 'react-awesome-reveal';
 import { Link } from 'react-router';
+import { ThemeContext } from '../../Context/ThemeContext';
 
 const Gardeners = () => {
-    const [gardeners, setGardeners] = useState([])
-    const [loading,setLoading] = useState(true)
+    const [gardeners, setGardeners] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const {theme} = useContext(ThemeContext);
+    console.log(theme);
+    
     useEffect(() => {
         fetch('http://localhost:3000/gardeners')
             .then(res => res.json())
@@ -34,7 +38,7 @@ const Gardeners = () => {
                         damping={0.20}
                         triggerOnce>
                         <div
-                            className='bg-white rounded-2xl p-6 border border-transparent hover:border-lime-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1'
+                            className='bg-base-100 rounded-2xl p-6 border border-transparent hover:border-lime-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1'
                         >
                             <div className='w-32 h-32 mx-auto mb-4 rounded-full ring-4 ring-green-500 overflow-hidden'>
                                 <img
@@ -45,14 +49,14 @@ const Gardeners = () => {
                             </div>
                             <h3 className='text-xl font-semibold mb-2 text-center text-lime-700'>{gardener.name}</h3>
 
-                            <div className='flex justify-center gap-4 mb-2 text-gray-700 text-sm'>
+                            <div className='flex justify-center gap-4 mb-2 text-base-content text-sm'>
                                 <p><strong>Age:</strong> {gardener.age}</p>
                                 <p><strong>Gender:</strong> {gardener.gender}</p>
                             </div>
 
-                            <p className='text-gray-700 text-center mb-1'><strong>Speciality:</strong> {gardener.speciality}</p>
-                            <p className='text-gray-700 text-center mb-1'><strong>Location:</strong> {gardener.location}</p>
-                            <p className='text-gray-700 text-center'><strong>Total Tips:</strong> {gardener.totalTips}</p>
+                            <p className='text-base-content text-center mb-1'><strong>Speciality:</strong> {gardener.speciality}</p>
+                            <p className='text-base-content text-center mb-1'><strong>Location:</strong> {gardener.location}</p>
+                            <p className='text-base-content text-center'><strong>Total Tips:</strong> {gardener.totalTips}</p>
                         </div>
 
                     </Slide>
