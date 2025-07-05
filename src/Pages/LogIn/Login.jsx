@@ -30,7 +30,6 @@ signIn(email,password)
     console.log(error.code);
     setLoading(false)
     toast.error("LogInFailed")
-    // setPasswordError(error.message)
     if(error.code === "auth/invalid-credential."){
         setPasswordError("Invalid email or password. Please try again.")
     }
@@ -61,7 +60,7 @@ const handleGoogleLogin = () => {
 }
 
     return (
-       <div className="min-h-screen flex items-center justify-center bg-green-50">
+       <div className="min-h-screen flex items-center justify-center bg-base-100">
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h1 className="text-5xl font-bold text-lime-600">LogIn now!</h1>
