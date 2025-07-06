@@ -8,7 +8,7 @@ const EditTip = () => {
   const [tip, setTip] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tips/${id}`)
+    fetch(`https://gardening-hub-server-ten.vercel.app/tips/${id}`)
       .then(res => res.json())
       .then(data => {
         setTip(data);
@@ -24,7 +24,7 @@ const EditTip = () => {
     e.preventDefault();
     const { _id, ...tipData } = tip;
     try {
-      const res = await fetch(`http://localhost:3000/tips/${id}`, {
+      const res = await fetch(`https://gardening-hub-server-ten.vercel.app/tips/${id}`, {
         method: 'PATCH',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(tipData),

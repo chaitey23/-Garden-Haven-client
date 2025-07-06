@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import usePageTitle from '../../hooks/usepageTitle';
 const ExploreGardeners = () => {
+  usePageTitle("ExploreGardeners")
     const [AllGardeners,setAllGardeners]= useState([]);
     const [loading,setLoading]= useState(true)
 useEffect(()=>{
-    fetch('http://localhost:3000/exploreGardeners')
+    fetch('https://gardening-hub-server-ten.vercel.app/exploreGardeners')
     .then(res => res.json())
     .then(data => {
         console.log(data);

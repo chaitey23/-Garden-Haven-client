@@ -2,9 +2,11 @@ import React, { use, useState }  from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import usePageTitle from '../../hooks/usepageTitle';
 
 
 const ShareTip = () => {
+    usePageTitle("Share-Tips")
 const {user} = use(AuthContext);
 const navigate = useNavigate();
 const [loading,setLoading] = useState(false);
@@ -24,7 +26,7 @@ const handleShareTipSubmit = e =>{
       userName: user?.displayName,
 
     }
-    fetch("http://localhost:3000/tips",{
+    fetch("https://gardening-hub-server-ten.vercel.app/tips",{
     method:'POST',
     headers:{
         "content-type" : "application/json"

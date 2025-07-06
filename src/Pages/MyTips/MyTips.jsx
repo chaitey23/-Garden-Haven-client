@@ -4,8 +4,10 @@ import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { Link, useLocation } from 'react-router';
 import Swal from 'sweetalert2';
+import usePageTitle from '../../hooks/usepageTitle';
 
 const MyTips = () => {
+  usePageTitle("My-Tips")
   const { user } = React.useContext(AuthContext);
   const [myTips, setMyTips] = useState([]);
   const location = useLocation();
@@ -14,7 +16,7 @@ const MyTips = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/tips?email=${user.email}`)
+      fetch(`https://gardening-hub-server-ten.vercel.app/tips?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMyTips(data));
     }
@@ -31,7 +33,7 @@ const MyTips = () => {
   });
   if(result.isConfirmed){
     try{
-      const res = await fetch(`http://localhost:3000/tips/${id}`,{
+      const res = await fetch(`https://gardening-hub-server-ten.vercel.app/tips/${id}`,{
         method:"DELETE",
       })
      if(!res.ok){

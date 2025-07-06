@@ -4,8 +4,10 @@ import Gardeners from '../Gardeners/Gardeners';
 import GardeningFunFacts from '../GardeningFunFacts';
 import Events from '../Events';
 import TopGardeningTips from '../TopGardeningTips';
+import usePageTitle from '../../hooks/usepageTitle';
 
 const Home = () => {
+  usePageTitle("Home")
   return (
     <>
       <Banner></Banner>

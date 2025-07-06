@@ -10,7 +10,7 @@ const Gardeners = () => {
     console.log(theme);
     
     useEffect(() => {
-        fetch('http://localhost:3000/gardeners')
+        fetch('https://gardening-hub-server-ten.vercel.app/gardeners')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

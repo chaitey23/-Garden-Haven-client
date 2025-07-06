@@ -16,4 +16,4 @@ return(
     </ThemeContext.Provider>
 )
 }
-export default ThemeProvider
+export default ThemeProvider;

@@ -31,7 +31,7 @@ const TopGardeningTips = () => {
 console.log(theme);
 
   useEffect(() => {
-    fetch("http://localhost:3000/tips?status=public")
+    fetch("https://gardening-hub-server-ten.vercel.app/tips?status=public")
       .then(res => res.json())
       .then(data => {
         setTips(data.slice(0, 6));

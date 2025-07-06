@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { BiLike } from 'react-icons/bi';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link, useParams } from 'react-router';
+import usePageTitle from '../../hooks/usepageTitle';
 
 const TipDetails = () => {
+    usePageTitle("Tip-Details")
     const {id} = useParams();
     const [tip,setTip] = useState(null);
     useEffect(()=>{
-        fetch(`http://localhost:3000/tips/${id}`)
+        fetch(`https://gardening-hub-server-ten.vercel.app/tips/${id}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -22,7 +24,7 @@ const TipDetails = () => {
         )
     }
     const handleLike = () => {
-        fetch(`http://localhost:3000/tips/like/${id}`,{
+        fetch(`https://gardening-hub-server-ten.vercel.app/tips/like/${id}`,{
             method:"PATCH",
             headers:{
                 'content-type' : "application/json"
@@ -30,10 +32,13 @@ const TipDetails = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            if (data.modifiedCount >0) {
+         if (data.modifiedCount >0) {
                 setTip(prev => ({...prev, totalLiked: prev.totalLiked + 1}))
             }
+        })
+        .catch(err =>{
+            console.error("like request failed", err);
+            
         })
     }
     return (
@@ -41,7 +46,7 @@ const TipDetails = () => {
       <img src={tip.image} alt={tip.title} className="w-full h-60 object-cover rounded mb-4" />
       <Link to='/browseTips' className='flex gap-2 text-blue-500 items-center'>
       <FaArrowLeft />
-            <a href="">back to All tips</a>
+         <span>back to All tips</span>
             </Link>
       <h2 className="text-3xl font-bold text-lime-600 mb-2">{tip.title}</h2>
       <p className="mb-2"><strong>Category:</strong> {tip.category}</p>

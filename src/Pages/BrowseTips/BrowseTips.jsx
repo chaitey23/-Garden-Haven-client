@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router';
+import usePageTitle from '../../hooks/usepageTitle';
 
 const BrowseTips = () => {
+  usePageTitle("BrowseTips")
   const [tips, setTips] = useState([]);
   const [filteredTips, setFilteredTips] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -12,7 +14,7 @@ const BrowseTips = () => {
   const [imageLoaded, setImageLoaded] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:3000/tips")
+    fetch("https://gardening-hub-server-ten.vercel.app/tips")
       .then(res => res.json())
       .then(data => {
         setTips(data);

@@ -2,8 +2,10 @@ import React, {  use,  useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import usePageTitle from '../../hooks/usepageTitle';
 
 const Login = () => {
+    usePageTitle("Login")
 const {signIn,googleLogin,loading,setLoading} = use(AuthContext);
 const location = useLocation();
 console.log(location.pathname);

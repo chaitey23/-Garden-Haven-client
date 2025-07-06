@@ -3,8 +3,10 @@ import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
+import usePageTitle from '../../hooks/usepageTitle';
 
 const SignUp = () => {
+    usePageTitle("SignUp")
     const { createUser,googleLogin,setUser,setLoading } = use(AuthContext);
     const [passwordError, setPasswordError] = useState("");
     const location = useLocation();
