@@ -74,7 +74,10 @@ console.log(theme);
               loading='lazy'
               className='h-40 w-full object-cover rounded mb-3'
             />
-            <h3 className='text-xl font-semibold text-lime-700'>{tip.title}</h3>
+            <div className='flex justify-between'>
+              <h3 className='text-xl font-semibold text-lime-700'>{tip.title}</h3>
+            <p className='text-sm text-lime-700 font-semibold'>Liked:{tip.totalLiked}</p>
+            </div>
             <p className='text-sm text-base-content  mb-2'>{tip.category}</p>
             <Link
               to={`/tips/${tip._id}`}

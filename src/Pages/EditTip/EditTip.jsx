@@ -25,7 +25,7 @@ const EditTip = () => {
     const { _id, ...tipData } = tip;
     try {
       const res = await fetch(`https://gardening-hub-server-ten.vercel.app/tips/${id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(tipData),
       });
