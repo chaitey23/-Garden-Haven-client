@@ -49,8 +49,9 @@ const MyTips = () => {
   }
   };
   return (
-    <div className="p-4 max-w-7xl mx-auto w-full">
-      <h1 className="text-3xl font-bold text-lime-600 text-center mb-6">
+    <div className="min-h-screen flex flex-col p-4 max-w-7xl mx-auto w-full">
+      <main className='flex-grow'>
+   <h1 className="text-3xl font-bold text-lime-600 text-center mb-6 mt-20">
         My Shared Tips
       </h1>
       {myTips.length === 0 ? (
@@ -129,6 +130,8 @@ const MyTips = () => {
           </table>
         </div>
       )}
+      </main>
+   
     </div>
   );
 };

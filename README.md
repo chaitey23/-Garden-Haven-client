@@ -1,6 +1,6 @@
 # 🌿 Garden Haven - Gardening Community & Resource Hub (Client)
 
-🔗 **Live Site URL:** [https://your-client-site-url.netlify.app](https://your-client-site-url.netlify.app)
+🔗 **Live Site URL:** [https://gardening-hub-application.web.app/](https://gardening-hub-application.web.app/)
 
 ## 🚀 Features
 - 🔐 Firebase Authentication with Email/Password and Google Sign-In
