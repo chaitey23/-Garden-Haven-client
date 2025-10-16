@@ -50,3 +50,37 @@ VITE_FIREBASE_PROJECT_ID=your_project_id
 - Tip Details
 - My Tips
 - Update Tip
+
+## 🖼️ Screenshots
+
+### Home Page
+![Home Page](./ss-home.png)
+
+### Browse Details Tips (private Route)
+![Browse details Tips](./ss-details.png)
+
+### shared Tips (Private Route)
+![Shared Tips](./ss-sharedTip.png)
+
+💻 How to Run Locally
+
+Clone the repository:
+
+git clone <https://github.com/chaitey23/-Garden-Haven-client>
+
+
+Navigate to the client folder:
+
+cd client
+
+
+Install dependencies:
+
+npm install
+
+
+Create a .env file and add your Firebase credentials.
+
+Start the project:
+
+npm run dev
