@@ -1,8 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Fade, Slide } from 'react-awesome-reveal';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../Context/ThemeContext';
-import { FaCalendarAlt, FaVenusMars, FaStar, FaMapMarkerAlt, FaLeaf, FaLightbulb } from 'react-icons/fa';
+import {
+    FaCalendarAlt,
+    FaVenusMars,
+    FaStar,
+    FaMapMarkerAlt,
+    FaLeaf,
+    FaUserTie,
+    FaArrowRight
+} from 'react-icons/fa';
 
 const Gardeners = () => {
     const [gardeners, setGardeners] = useState([]);
@@ -21,150 +28,191 @@ const Gardeners = () => {
     if (loading) {
         return (
             <div className='flex justify-center items-center h-[50vh]'>
-                <div className="relative">
-                    <div className="w-20 h-20 border-4 border-lime-200 rounded-full"></div>
-                    <div className="w-20 h-20 border-4 border-lime-600 rounded-full animate-spin absolute top-0 left-0 border-t-transparent"></div>
-                </div>
+                <span className="loading loading-spinner loading-lg text-lime-600"></span>
             </div>
         );
     }
 
     return (
-        <div className='mt-12 px-4'>
-            <h1 className='text-3xl font-bold text-center text-lime-600 mb-12'>
-                Meet Our <span className='text-green-500'>Featured Gardeners</span>
-            </h1>
+        <div className='mt-32 px-4'>
+            <div className='text-center mb-12'>
+                <h2 className='text-4xl font-bold text-lime-600 mb-4'>
+                    Our Expert Gardeners
+                </h2>
+                <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                    Meet our passionate gardening community
+                </p>
+            </div>
 
-
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                 {gardeners.map((gardener) => (
-                    <Slide
+                    <div
                         key={gardener._id}
-                        cascade
-                        direction="up"
-                        duration={800}
-                        triggerOnce
+                        className='group relative'
                     >
-                        <div className='group relative'>
-                            {/* Card Container */}
-                            <div className='relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700'>
-
-
-                                <div className='relative pt-8 pb-4 px-6'>
-
-                                    <div className='absolute top-0 left-0 right-0 h-24 bg-gradient-to-r from-lime-400 to-emerald-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500'></div>
-
-
-                                    <div className='relative mx-auto w-32 h-32 mb-6'>
-
-                                        <div className='absolute inset-0 rounded-full border-4 border-lime-100 dark:border-gray-700'></div>
-
-
-                                        <div className='absolute inset-0 rounded-full border-4 border-lime-500 opacity-0 group-hover:opacity-100 animate-spin-slow border-t-transparent transition-opacity duration-500'></div>
-
-
+                        <div className={`relative rounded-xl overflow-hidden transition-all duration-300 ${theme === 'dark'
+                            ? 'bg-gray-800 hover:shadow-2xl hover:shadow-emerald-900/30'
+                            : 'bg-white hover:shadow-2xl hover:shadow-lime-100 border border-gray-100'
+                            }`}
+                        >
+                            <div className={`p-6 ${theme === 'dark' ? 'bg-emerald-900/20' : 'bg-lime-50'}`}>
+                                <div className='flex items-center gap-4'>
+                                    <div className='relative'>
                                         <img
                                             src={gardener.image}
                                             alt={gardener.name}
-                                            className='w-full h-full rounded-full object-cover p-1 border-4 border-white dark:border-gray-800 shadow-lg'
+                                            className='w-20 h-20 rounded-full object-cover border-4 border-white dark:border-gray-700'
                                         />
-
-
-                                        <div className='absolute bottom-2 right-2 w-10 h-10 bg-lime-500 rounded-full flex items-center justify-center shadow-lg'>
-                                            <FaLeaf className='text-white text-sm' />
+                                        <div className='absolute -bottom-1 -right-1 w-8 h-8 bg-lime-500 rounded-full flex items-center justify-center'>
+                                            <FaLeaf className='text-white text-xs' />
                                         </div>
                                     </div>
 
 
-                                    <div className='text-center mb-4'>
-                                        <h3 className='text-xl font-bold text-gray-800 dark:text-white group-hover:text-lime-600 transition-colors duration-300'>
+                                    <div className='flex-1'>
+                                        <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                                             {gardener.name}
                                         </h3>
-                                        <p className='text-sm text-lime-600 font-medium mt-1'>
-                                            {gardener.speciality}
-                                        </p>
-                                    </div>
-                                </div>
-
-
-                                <div className='px-6 pb-6'>
-                                    <div className='grid grid-cols-2 gap-4 mb-6'>
-                                        <div className='flex items-center space-x-3 bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg group-hover:bg-lime-50 dark:group-hover:bg-lime-900/20 transition-colors duration-300'>
-                                            <div className='w-10 h-10 bg-lime-100 dark:bg-lime-900/30 rounded-lg flex items-center justify-center'>
-                                                <FaCalendarAlt className='text-lime-600' />
-                                            </div>
-                                            <div>
-                                                <p className='text-sm text-gray-500 dark:text-gray-400'>Age</p>
-                                                <p className='font-semibold text-gray-800 dark:text-white'>{gardener.age} years</p>
-                                            </div>
-                                        </div>
-
-                                        <div className='flex items-center space-x-3 bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg group-hover:bg-lime-50 dark:group-hover:bg-lime-900/20 transition-colors duration-300'>
-                                            <div className='w-10 h-10 bg-lime-100 dark:bg-lime-900/30 rounded-lg flex items-center justify-center'>
-                                                <FaVenusMars className='text-lime-600' />
-                                            </div>
-                                            <div>
-                                                <p className='text-sm text-gray-500 dark:text-gray-400'>Gender</p>
-                                                <p className='font-semibold text-gray-800 dark:text-white'>{gardener.gender}</p>
-                                            </div>
-                                        </div>
-
-                                        <div className='flex items-center space-x-3 bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg group-hover:bg-lime-50 dark:group-hover:bg-lime-900/20 transition-colors duration-300'>
-                                            <div className='w-10 h-10 bg-lime-100 dark:bg-lime-900/30 rounded-lg flex items-center justify-center'>
-                                                <FaStar className='text-lime-600' />
-                                            </div>
-                                            <div>
-                                                <p className='text-sm text-gray-500 dark:text-gray-400'>Tips</p>
-                                                <p className='font-semibold text-gray-800 dark:text-white'>{gardener.totalTips}</p>
-                                            </div>
-                                        </div>
-
-                                        <div className='flex items-center space-x-3 bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg group-hover:bg-lime-50 dark:group-hover:bg-lime-900/20 transition-colors duration-300'>
-                                            <div className='w-10 h-10 bg-lime-100 dark:bg-lime-900/30 rounded-lg flex items-center justify-center'>
-                                                <FaMapMarkerAlt className='text-lime-600' />
-                                            </div>
-                                            <div>
-                                                <p className='text-sm text-gray-500 dark:text-gray-400'>Location</p>
-                                                <p className='font-semibold text-gray-800 dark:text-white truncate'>{gardener.location}</p>
-                                            </div>
+                                        <div className='flex items-center gap-2 mt-1'>
+                                            <FaUserTie className='text-lime-600 text-sm' />
+                                            <p className='text-sm text-lime-600 font-medium'>
+                                                {gardener.speciality}
+                                            </p>
                                         </div>
                                     </div>
-
-
-                                    <div className='mb-6'>
-                                        <p className='text-sm text-gray-500 dark:text-gray-400 mb-2'>Expertise Areas:</p>
-                                        <div className='flex flex-wrap gap-2'>
-                                            {gardener.speciality.split(',').slice(0, 3).map((skill, idx) => (
-                                                <span
-                                                    key={idx}
-                                                    className='px-3 py-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 text-xs font-medium rounded-full border border-lime-200 dark:border-lime-800'
-                                                >
-                                                    {skill.trim()}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <Link to={`exploreGardeners`}>
-                                        <button className='w-full py-3 bg-gradient-to-r from-lime-500 to-emerald-500 hover:from-lime-600 hover:to-emerald-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-md hover:shadow-lg flex items-center justify-center space-x-2'>
-                                            <FaLightbulb className='text-sm' />
-                                            <span>View Profile</span>
-                                        </button>
-                                    </Link>
-                                </div>
-
-                                {/* Corner Decoration */}
-                                <div className='absolute top-0 right-0 w-16 h-16 overflow-hidden'>
-                                    <div className='absolute -top-8 -right-8 w-16 h-16 bg-lime-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500 rotate-45'></div>
                                 </div>
                             </div>
+
+                            <div className='p-6'>
+                                <div className='grid grid-cols-2 gap-4 mb-6'>
+                                    <div className='flex items-center gap-3'>
+                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                                            }`}>
+                                            <FaCalendarAlt className='text-lime-600' />
+                                        </div>
+                                        <div>
+                                            <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                                                Age
+                                            </p>
+                                            <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                                                {gardener.age} years
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className='flex items-center gap-3'>
+                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                                            }`}>
+                                            <FaVenusMars className='text-lime-600' />
+                                        </div>
+                                        <div>
+                                            <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                                                Gender
+                                            </p>
+                                            <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                                                {gardener.gender}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className='flex items-center gap-3'>
+                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                                            }`}>
+                                            <FaStar className='text-lime-600' />
+                                        </div>
+                                        <div>
+                                            <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                                                Tips
+                                            </p>
+                                            <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                                                {gardener.totalTips}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className='flex items-center gap-3'>
+                                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                                            }`}>
+                                            <FaMapMarkerAlt className='text-lime-600' />
+                                        </div>
+                                        <div>
+                                            <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                                                Location
+                                            </p>
+                                            <p className={`font-semibold text-sm truncate ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                                                }`}>
+                                                {gardener.location}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='mb-6'>
+                                    <p className={`text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                                        }`}>
+                                        Expertise:
+                                    </p>
+                                    <div className='flex flex-wrap gap-2'>
+                                        {gardener.speciality.split(',').slice(0, 3).map((skill, idx) => (
+                                            <span
+                                                key={idx}
+                                                className={`px-3 py-1 text-xs font-medium rounded-full ${theme === 'dark'
+                                                    ? 'bg-emerald-900/40 text-emerald-300'
+                                                    : 'bg-lime-100 text-lime-700'
+                                                    }`}
+                                            >
+                                                {skill.trim()}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+
+                                <Link to={`/exploreGardeners`}>
+                                    <button className={`w-full py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-all ${theme === 'dark'
+                                        ? 'bg-lime-700 hover:bg-lime-600 text-white'
+                                        : 'bg-lime-600 hover:bg-lime-700 text-white'
+                                        }`}>
+                                        View Profile
+                                        <FaArrowRight />
+                                    </button>
+                                </Link>
+                            </div>
+
+
+                            <div className='absolute inset-0 pointer-events-none overflow-hidden rounded-xl'>
+
+                                <div className={`absolute top-0 left-0 right-0 h-0.5 ${theme === 'dark' ? 'bg-emerald-500' : 'bg-lime-500'} 
+                                    transform md:scale-x-0 md:group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                                ></div>
+
+                                <div className={`absolute top-0 right-0 bottom-0 w-0.5 ${theme === 'dark' ? 'bg-emerald-500' : 'bg-lime-500'} 
+                                    transform md:scale-y-0 md:group-hover:scale-y-100 transition-transform duration-300 origin-top md:group-hover:delay-75`}
+                                ></div>
+
+                                <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${theme === 'dark' ? 'bg-emerald-500' : 'bg-lime-500'} 
+                                    transform md:scale-x-0 md:group-hover:scale-x-100 transition-transform duration-300 origin-right md:group-hover:delay-150`}
+                                ></div>
+
+                                <div className={`absolute top-0 left-0 bottom-0 w-0.5 ${theme === 'dark' ? 'bg-emerald-500' : 'bg-lime-500'} 
+                                    transform md:scale-y-0 md:group-hover:scale-y-100 transition-transform duration-300 origin-bottom md:group-hover:delay-225`}
+                                ></div>
+                            </div>
                         </div>
-                    </Slide>
+                    </div>
                 ))}
             </div>
 
-            <Link to='/exploreGardeners'>
-                <button className="btn bg-lime-600 text-white rounded-4xl mx-auto mt-15 block">Explore All Gardeners</button>
-            </Link>
+            <div className='text-center mt-12'>
+                <Link to='/exploreGardeners'>
+                    <button className={`px-8 py-3 rounded-full font-bold transition-all ${theme === 'dark'
+                        ? 'bg-lime-700 hover:bg-lime-600 text-white'
+                        : 'bg-lime-600 hover:bg-lime-700 text-white'
+                        }`}>
+                        Explore All Gardeners
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 };
