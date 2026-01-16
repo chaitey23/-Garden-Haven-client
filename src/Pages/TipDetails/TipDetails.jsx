@@ -178,13 +178,10 @@ const TipDetails = () => {
                 </div>
             </div>
 
-            {/* Main Content */}
             <div className="container mx-auto px-4 py-8 -mt-12 relative z-10">
                 <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Left Column - Main Content */}
                     <div className="lg:col-span-2">
                         <div className={`${themeClasses.cardBg} rounded-2xl shadow-xl overflow-hidden ${themeClasses.cardBorder}`}>
-                            {/* Hero Image */}
                             <div className="relative h-72 md:h-96 overflow-hidden group">
                                 <img
                                     src={tip.image}
@@ -195,7 +192,6 @@ const TipDetails = () => {
                                     } to-transparent`}></div>
                             </div>
 
-                            {/* Content */}
                             <div className="p-6 md:p-8">
                                 <div className="prose prose-lg max-w-none">
                                     <h2 className={`text-2xl font-bold ${themeClasses.textPrimary} mb-4 flex items-center gap-3`}>
@@ -210,7 +206,6 @@ const TipDetails = () => {
                                         {tip.description}
                                     </div>
 
-                                    {/* Key Takeaways */}
                                     <div className={`p-6 rounded-2xl border ${theme === 'dark'
                                         ? 'border-emerald-800 bg-gradient-to-br from-gray-800 to-gray-900'
                                         : 'border-emerald-100 bg-gradient-to-br from-emerald-50 to-white'
@@ -237,9 +232,9 @@ const TipDetails = () => {
                                         </ul>
                                     </div>
 
-                                    {/* Plant Care Tips */}
+
                                     <div className="grid md:grid-cols-2 gap-6 mb-8">
-                                        {/* Sunlight Card */}
+
                                         <div className={`p-5 rounded-2xl border ${theme === 'dark'
                                             ? 'bg-gradient-to-br from-amber-900/20 to-gray-800 border-amber-800'
                                             : 'bg-gradient-to-br from-amber-50 to-white border-amber-100'
@@ -282,9 +277,8 @@ const TipDetails = () => {
                         </div>
                     </div>
 
-                    {/* Right Column - Sidebar */}
                     <div className="space-y-6">
-                        {/* Like Card */}
+
                         <div className={`rounded-2xl p-6 shadow-xl ${themeClasses.likeCardBg} text-white`}>
                             <div className="text-center mb-6">
                                 <div className={`w-16 h-16 ${theme === 'dark' ? 'bg-white/10' : 'bg-white/20'
