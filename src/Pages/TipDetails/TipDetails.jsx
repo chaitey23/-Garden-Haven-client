@@ -8,7 +8,7 @@ const TipDetails = () => {
     usePageTitle("Tip-Details")
     const { id } = useParams();
     const [tip, setTip] = useState(null);
-    const [liking,setLiking] = useState(null);
+    const [liking, setLiking] = useState(null);
     useEffect(() => {
         fetch(`https://gardening-hub-server-ten.vercel.app/tips/${id}`)
             .then(res => res.json())
@@ -24,15 +24,15 @@ const TipDetails = () => {
             </div>
         )
     }
-    const handleLike =  async () => {
-        if(liking) return;
+    const handleLike = async () => {
+        if (liking) return;
         setLiking(true)
-      await  fetch(`https://gardening-hub-server-ten.vercel.app/tips/like/${id}`, {
+        await fetch(`https://gardening-hub-server-ten.vercel.app/tips/like/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': "application/json"
             },
-        
+
 
         })
             .then(res => res.json())
@@ -45,7 +45,7 @@ const TipDetails = () => {
                 console.error("like request failed", err);
 
             })
-            setLiking(false)
+        setLiking(false)
     }
 
 
@@ -73,7 +73,7 @@ const TipDetails = () => {
                       ${liking ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-400 text-white'}`}
                 >
                     <BiLike /> {
-                        liking ? (<span className="loading loading-spinner loading-sm"></span>):(`${tip.totalLiked} Like`)
+                        liking ? (<span className="loading loading-spinner loading-sm"></span>) : (`${tip.totalLiked} Like`)
                     }
                 </button>
             </div>

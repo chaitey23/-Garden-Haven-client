@@ -40,10 +40,8 @@ const ExploreGardeners = () => {
       });
   }, []);
 
-  // Get unique specialities
   const uniqueSpecialities = [...new Set(AllGardeners.map(g => g.speciality))].slice(0, 6);
 
-  // Filter, search and sort gardeners
   let filteredGardeners = AllGardeners.filter(gardener => {
     const matchesCategory = selectedCategory === 'all' ||
       gardener.speciality.toLowerCase().includes(selectedCategory.toLowerCase());
@@ -56,7 +54,6 @@ const ExploreGardeners = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Apply sorting
   if (sortBy === 'tips_high') {
     filteredGardeners.sort((a, b) => (b.totalTips || 0) - (a.totalTips || 0));
   } else if (sortBy === 'tips_low') {
@@ -89,7 +86,6 @@ const ExploreGardeners = () => {
     <div className={`min-h-screen py-12 px-4 md:px-8 transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
       <div className='max-w-7xl mx-auto'>
 
-        {/* Header with Theme Toggle */}
         <div className='mb-12 text-center'>
           <div className='flex justify-between items-center mb-6'>
             <div className='flex items-center gap-3'>
@@ -216,7 +212,6 @@ const ExploreGardeners = () => {
           </div>
         </div>
 
-        {/* Gardeners Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
           {filteredGardeners.map((gardener) => (
             <div
@@ -228,9 +223,7 @@ const ExploreGardeners = () => {
                 : 'bg-white border-gray-200 hover:border-lime-400 hover:shadow-lg hover:shadow-lime-100/50'
                 }`}>
 
-                {/* Card Header */}
                 <div className='relative'>
-                  {/* Status Badge */}
                   <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${gardener.status === 'active'
                     ? theme === 'dark'
                       ? 'bg-green-900/50 text-green-300 border border-green-700'
@@ -246,7 +239,6 @@ const ExploreGardeners = () => {
                     {gardener.status.charAt(0).toUpperCase() + gardener.status.slice(1)}
                   </div>
 
-                  {/* Profile Image */}
                   <div className='pt-10 pb-6 px-6'>
                     <div className='relative mx-auto w-24 h-24'>
                       <img
@@ -261,9 +253,7 @@ const ExploreGardeners = () => {
                   </div>
                 </div>
 
-                {/* Card Body */}
                 <div className='px-6 pb-6 flex-1'>
-                  {/* Name & Speciality */}
                   <div className='text-center mb-4'>
                     <h3 className={`text-lg font-bold mb-1 group-hover:text-lime-600 transition-colors ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                       {gardener.name}
@@ -276,9 +266,7 @@ const ExploreGardeners = () => {
                     </div>
                   </div>
 
-                  {/* Stats */}
                   <div className='space-y-4 mb-6'>
-                    {/* Experience */}
                     <div className='flex items-center gap-3'>
                       <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${theme === 'dark' ? 'bg-lime-900/30' : 'bg-lime-50'}`}>
                         <FaBriefcase className={theme === 'dark' ? 'text-lime-400' : 'text-lime-600'} />
@@ -291,7 +279,6 @@ const ExploreGardeners = () => {
                       </div>
                     </div>
 
-                    {/* Tips Shared */}
                     <div className='flex items-center gap-3'>
                       <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${theme === 'dark' ? 'bg-lime-900/30' : 'bg-lime-50'}`}>
                         <FaLightbulb className={theme === 'dark' ? 'text-lime-400' : 'text-lime-600'} />
@@ -309,7 +296,6 @@ const ExploreGardeners = () => {
                       </div>
                     </div>
 
-                    {/* Age & Gender */}
                     <div className='grid grid-cols-2 gap-3'>
                       <div className='flex items-center gap-2'>
                         <div className={`w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 ${theme === 'dark' ? 'bg-lime-900/30' : 'bg-lime-50'}`}>
@@ -336,7 +322,6 @@ const ExploreGardeners = () => {
                       </div>
                     </div>
 
-                    {/* Location */}
                     <div className='flex items-center gap-2'>
                       <div className={`w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 ${theme === 'dark' ? 'bg-lime-900/30' : 'bg-lime-50'}`}>
                         <FaMapMarkerAlt className={theme === 'dark' ? 'text-lime-400' : 'text-lime-600'} />
@@ -349,23 +334,12 @@ const ExploreGardeners = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* View Profile Button */}
-                  <Link to={`/gardener/${gardener._id}`}>
-                    <button className={`w-full py-2.5 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-all duration-300 border group-hover:border-lime-400 ${theme === 'dark'
-                      ? 'bg-lime-900/30 text-lime-300 border-lime-700 hover:bg-lime-800/50'
-                      : 'bg-lime-50 text-lime-700 border-lime-200 hover:bg-lime-100'}`}>
-                      View Full Profile
-                      <FaArrowRight className='text-xs group-hover:translate-x-1 transition-transform' />
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Empty State */}
         {filteredGardeners.length === 0 && (
           <div className='text-center py-16'>
             <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 border ${theme === 'dark' ? 'bg-lime-900/20 border-lime-800' : 'bg-lime-50 border-lime-100'}`}>
@@ -391,7 +365,6 @@ const ExploreGardeners = () => {
           </div>
         )}
 
-        {/* Community Stats */}
         <div className='mt-12 grid grid-cols-1 md:grid-cols-3 gap-6'>
           <div className={`p-6 rounded-xl border ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100 shadow-sm'}`}>
             <div className='flex items-center gap-3 mb-3'>
