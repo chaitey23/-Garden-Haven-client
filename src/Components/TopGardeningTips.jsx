@@ -80,7 +80,7 @@ const TopGardeningTips = () => {
   return (
     <div className={`py-12 px-4 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 mt-32">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
