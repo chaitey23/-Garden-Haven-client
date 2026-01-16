@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Events = () => {
-    return (
-        <section className="px-4 mt-20 mb-20">
+  return (
+    <section className="px-4 mt-20 mb-20">
       <h2 className="text-3xl font-bold text-center text-lime-600 mb-10">
         Upcoming Gardening Events 📅
       </h2>
@@ -24,7 +24,7 @@ const Events = () => {
         </div>
       </div>
     </section>
-    );
+  );
 };
 
 export default Events;

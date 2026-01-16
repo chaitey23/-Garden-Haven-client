@@ -1,59 +1,122 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaPhone, FaEnvelope, FaMapMarkerAlt, FaSeedling } from 'react-icons/fa';
 
 const Footer = () => {
-    return (
-        <div className='bg-amber-900 mt-8'>
-            <footer className="footer sm:footer-horizontal flex justify-evenly  text-white p-10">
-  <nav>
-    <h6 className="footer-title">🌿 Services</h6>
-    <a className="link link-hover">Plant Care Tips</a>
-    <a className="link link-hover">Gardening Tools</a>
-    <a className="link link-hover">Organic Fertilizers</a>
-    <a className="link link-hover">Gardener Booking</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">🌻 Community</h6>
-    <a className="link link-hover">Explore Gardeners</a>
-    <a className="link link-hover">Ask Questions</a>
-    <a className="link link-hover">Events & Meetups</a>
-    <a className="link link-hover">Blogs & Tips</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">🌱 About</h6>
-    <a className="link link-hover">Our Story</a>
-    <a className="link link-hover">Contact Us</a>
-    <a className="link link-hover">Terms & Privacy</a>
-  </nav>
-</footer>
-<div className="flex flex-col md:flex-row items-center justify-evenly border-t border-white pt-6 mt-6 gap-4 text-sm text-gray-200">
-  <div className="text-center md:text-left">
-    <span className="font-bold text-lime-500 text-base">GardenHaven</span>
-    <p className="mt-1">Contact: +880 1234 567890 <br /> Email: info@gardenhaven.com</p>
-  </div>
+  return (
+    <div className='bg-gradient-to-r from-emerald-800 to-emerald-900 mt-16'>
+      <footer className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <FaSeedling className="text-3xl text-lime-400" />
+              <div>
+                <h2 className="text-2xl font-bold text-white">GardenHaven</h2>
+                <p className="text-lime-200 text-sm">Grow with Nature</p>
+              </div>
+            </div>
+            <p className="text-emerald-100 text-sm">
+              Your gardening companion for expert tips, tools, and community support.
+            </p>
+          </div>
 
- 
-  <div className="text-center">
-    <a href="#" className="hover:underline hover:text-lime-400 transition duration-200 mr-4">Terms of Service</a>
-    <a href="#" className="hover:underline hover:text-lime-400 transition duration-200">Privacy Policy</a>
-  </div>
+          {/* Services */}
+          <div>
+            <h6 className="text-lg font-bold text-white mb-4">🌿 Services</h6>
+            <div className="space-y-2">
+              {['Plant Care Tips', 'Gardening Tools', 'Organic Fertilizers', 'Gardener Booking'].map((service) => (
+                <a key={service} href="#" className="block text-emerald-100 hover:text-lime-300 transition-colors hover:pl-2 duration-200">
+                  {service}
+                </a>
+              ))}
+            </div>
+          </div>
 
-  
-  <div className="flex space-x-5">
-    <a href="https://www.facebook.com/chaetey001?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-200">
-      <FaFacebook className="text-2xl" />
-    </a>
-    <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-200">
-      <FaTwitter className="text-2xl" />
-    </a>
-    <a href="https://www.instagram.com/chaitey12?igsh=cnQ0dHkzZXZqdDZk" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-200">
-      <FaInstagram className="text-2xl" />
-    </a>
-  </div>
-</div>
+          {/* Community */}
+          <div>
+            <h6 className="text-lg font-bold text-white mb-4">👥 Community</h6>
+            <div className="space-y-2">
+              {['Explore Gardeners', 'Ask Questions', 'Events & Meetups', 'Blogs & Tips'].map((item) => (
+                <a key={item} href="#" className="block text-emerald-100 hover:text-lime-300 transition-colors hover:pl-2 duration-200">
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
 
+          {/* Contact */}
+          <div>
+            <h6 className="text-lg font-bold text-white mb-4">📞 Contact</h6>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-emerald-100">
+                <FaPhone className="text-lime-400" />
+                <span>+880 1234 567890</span>
+              </div>
+              <div className="flex items-center gap-2 text-emerald-100">
+                <FaEnvelope className="text-lime-400" />
+                <span>info@gardenhaven.com</span>
+              </div>
+              <div className="flex items-center gap-2 text-emerald-100">
+                <FaMapMarkerAlt className="text-lime-400" />
+                <span>Dhaka, Bangladesh</span>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+
+        {/* Divider */}
+        <div className="border-t border-emerald-700 my-8"></div>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Copyright */}
+          <div className="text-center md:text-left">
+            <p className="text-emerald-200 text-sm">
+              © {new Date().getFullYear()} GardenHaven. All rights reserved.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="flex gap-6">
+            <a href="#" className="text-emerald-100 hover:text-lime-300 transition-colors text-sm">
+              Terms of Service
+            </a>
+            <a href="#" className="text-emerald-100 hover:text-lime-300 transition-colors text-sm">
+              Privacy Policy
+            </a>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex gap-4">
+            <a
+              href="https://www.facebook.com/chaetey001?mibextid=ZbWKwL"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-emerald-700 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-colors"
+            >
+              <FaFacebook className="text-lg" />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-emerald-700 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-colors"
+            >
+              <FaTwitter className="text-lg" />
+            </a>
+            <a
+              href="https://www.instagram.com/chaitey12?igsh=cnQ0dHkzZXZqdDZk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-emerald-700 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-colors"
+            >
+              <FaInstagram className="text-lg" />
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
 };
 
 export default Footer;
