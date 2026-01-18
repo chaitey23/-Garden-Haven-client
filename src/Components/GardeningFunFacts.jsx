@@ -78,7 +78,6 @@ const GardeningFunFacts = () => {
           <div className={`w-20 h-1 mx-auto ${theme === 'dark' ? 'bg-gradient-to-r from-lime-500 to-emerald-500' : 'bg-gradient-to-r from-lime-400 to-emerald-400'} rounded-full`}></div>
         </div>
 
-        {/* Fun Facts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {funFacts.map((fact, index) => (
             <div
@@ -89,7 +88,6 @@ const GardeningFunFacts = () => {
                 ? 'hover:shadow-2xl hover:shadow-lime-900/20'
                 : 'hover:shadow-xl hover:shadow-lime-100/50'} hover:-translate-y-2`}>
 
-                {/* Icon */}
                 <div className="mb-4">
                   <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${theme === 'dark'
                     ? 'bg-black/20'
@@ -98,7 +96,6 @@ const GardeningFunFacts = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="flex-1">
                   <h3 className={`text-xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-900'} group-hover:${fact.accentColor} transition-colors`}>
                     {fact.title}
@@ -108,19 +105,16 @@ const GardeningFunFacts = () => {
                   </p>
                 </div>
 
-                {/* Decorative Corner */}
                 <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden">
                   <div className={`absolute -top-6 -right-6 w-12 h-12 ${theme === 'dark' ? 'bg-lime-900/20' : 'bg-lime-100'} rotate-45`}></div>
                 </div>
 
-                {/* Hover Effect Border */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
                   <div className={`absolute top-0 left-0 right-0 h-0.5 ${fact.accentColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}></div>
                   <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${fact.accentColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right delay-150`}></div>
                 </div>
               </div>
 
-              {/* Floating Effect */}
               <div className={`absolute -z-10 -bottom-2 left-3 right-3 h-4 rounded-xl blur-md ${theme === 'dark'
                 ? 'bg-lime-900/20'
                 : 'bg-lime-200/50'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
@@ -128,7 +122,6 @@ const GardeningFunFacts = () => {
           ))}
         </div>
 
-        {/* Fun Fact Stats */}
         <div className={`mt-16 p-8 rounded-2xl border ${theme === 'dark'
           ? 'bg-gray-800 border-gray-700'
           : 'bg-white border-gray-200'} shadow-lg`}>
